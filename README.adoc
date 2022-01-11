@@ -1,0 +1,36 @@
+== Spring Native Kafka example
+
+Bare-bones sample for a Kafka Listener with SASL.
+
+[IMPORTANT]
+.Not working for the native version!
+====
+This is a sample project with the reproduction steps.
+Later it should be updated when there is a solution for the problem is found.
+====
+
+== Setup
+
+=== Kafka Credentials
+
+Create a `local.env` file and initialize the following environment variables:
+
+. `KAFKA_TOPIC_NAME` (to your topic name)
+. `KAFKA_GROUP_ID` (to your group id)
+. `SPRING_KAFKA_PROPERTIES_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="<USER>" password="<PASSWORD>";`
+
+
+=== Dockerized version
+
+Make sure you have a `local.env` with your Kafka credentials first!
+
+. Run `docker compose up`
+
+
+=== Local Environment
+
+Make sure you have https://sdkman.io/[sdkman installed] first if you want to set up your environment with the following steps.
+
+. Run `sdk env install` to ensure you have the proper versions installed.
+. Run `gu install native-image`
+. Run `mvn -Pnative -DskipTests package` to build the native application.
