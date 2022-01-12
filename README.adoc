@@ -35,3 +35,41 @@ Make sure you have https://sdkman.io/[sdkman installed] first if you want to set
 . Run `sdk env install` to ensure you have the proper versions installed.
 . Run `gu install native-image`
 . Run `mvn -Pnative -DskipTests package` to build the native application.
+
+
+== Error
+
+    spring-native-kafka-spring-native-kafka-1  | java.io.IOException: Channel could not be created for socket java.nio.channels.SocketChannel[closed]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.common.network.Selector.buildAndAttachKafkaChannel(Selector.java:348) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.common.network.Selector.registerChannel(Selector.java:329) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.common.network.Selector.connect(Selector.java:256) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.NetworkClient.initiateConnect(NetworkClient.java:977) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.NetworkClient.access$600(NetworkClient.java:73) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.maybeUpdate(NetworkClient.java:1148) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.maybeUpdate(NetworkClient.java:1036) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.NetworkClient.poll(NetworkClient.java:549) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:265) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:236) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:227) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.awaitMetadataUpdate(ConsumerNetworkClient.java:164) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.ensureCoordinatorReady(AbstractCoordinator.java:258) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.poll(ConsumerCoordinator.java:480) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.KafkaConsumer.updateAssignmentMetadataIfNeeded(KafkaConsumer.java:1262) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1231) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1211) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollConsumer(KafkaMessageListenerContainer.java:1509) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doPoll(KafkaMessageListenerContainer.java:1499) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1327) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1236) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at java.lang.Thread.run(Thread.java:833) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at com.oracle.svm.core.thread.JavaThreads.threadStartRoutine(JavaThreads.java:596) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at com.oracle.svm.core.posix.thread.PosixJavaThreads.pthreadStartRoutine(PosixJavaThreads.java:192) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  | Caused by: org.apache.kafka.common.KafkaException: org.apache.kafka.common.errors.SaslAuthenticationException: Failed to configure SaslClientAuthenticator
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.common.network.SaslChannelBuilder.buildChannel(SaslChannelBuilder.java:240) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    at org.apache.kafka.common.network.Selector.buildAndAttachKafkaChannel(Selector.java:338) ~[na:na]
+    spring-native-kafka-spring-native-kafka-1  |    ... 25 common frames omitted
+    spring-native-kafka-spring-native-kafka-1  | Caused by: org.apache.kafka.common.errors.SaslAuthenticationException: Failed to configure SaslClientAuthenticator
+    spring-native-kafka-spring-native-kafka-1  | Caused by: org.apache.kafka.common.errors.SaslAuthenticationException: Failed to create SaslClient with mechanism PLAIN
+    spring-native-kafka-spring-native-kafka-1  |
