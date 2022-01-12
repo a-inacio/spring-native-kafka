@@ -6,7 +6,7 @@ Bare-bones sample for a Kafka Listener with SASL.
 .Not working for the native version!
 ====
 This is a sample project with the reproduction steps.
-Later it should be updated when there is a solution for the problem is found.
+Later it should be updated when there is a solution for the problem.
 
 *Reported* https://github.com/oracle/graal/issues/4089#issuecomment-1010944416[here]
 ====
